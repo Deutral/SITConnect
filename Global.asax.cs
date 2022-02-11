@@ -18,6 +18,11 @@ namespace SITConnect
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            HttpContext.Current.Response.AddHeader("X-Frame-Options", "DENY");
+        }
+
         void Session_Start(object sender, EventArgs e)
         {
             if (Session["LoggedIn"] != null && Session["AuthToken"] != null && Request.Cookies["AuthToken"] != null)
