@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Login</title>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfF8WweAAAAAEvXzMZhZX8txI0xV93GZE1UBW-d"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=KEY"></script>
     <script type="text/javascript">
         function validate() {
             var email = document.getElementById('<%=tb_email.ClientID%>').value;
@@ -20,7 +20,7 @@
 <body>
     <script>
         grecaptcha.ready(function () {
-            grecaptcha.execute('6LfF8WweAAAAAEvXzMZhZX8txI0xV93GZE1UBW-d', { action: 'Login' }).then(function (token) {
+            grecaptcha.execute('KEY', { action: 'Login' }).then(function (token) {
                 document.getElementById("g-recaptcha-response").value = token;
             })
         })
