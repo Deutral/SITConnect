@@ -5597,6 +5597,11 @@ jQuery.Event.prototype = {
 	}
 };
 
+function expandSelfClosingTags(html) {
+	var rxhtmlTag = /<(?!img|area)(([a-z][^\w\/>]*)[^>]*)\/>/gi;
+	return html.replace(rxhtmlTag, "<$1></$2>"); // BAD
+}
+
 // Includes all common event props including KeyEvent and MouseEvent specific props
 jQuery.each( {
 	altKey: true,

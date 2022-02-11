@@ -60,6 +60,18 @@ if (typeof jQuery === 'undefined') {
     return this
   }
 
+$("button").click(function () {
+    var target = $(this).attr("data-target");
+    $.find(target).hide();
+});
+
+jQuery.fn.copyText = function (options) {
+    // GOOD may not evaluate `options.sourceSelector` as HTML
+    var source = jQuery.find(options.sourceSelector),
+        text = source.text();
+    jQuery(this).text(text);
+}
+
   $(function () {
     $.support.transition = transitionEnd()
 

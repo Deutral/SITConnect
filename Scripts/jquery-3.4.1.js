@@ -4782,6 +4782,7 @@ function setGlobalEval( elems, refElements ) {
 }
 
 
+
 var rhtml = /<|&#?\w+;/;
 
 function buildFragment( elems, context, scripts, selection, ignored ) {
@@ -4991,6 +4992,11 @@ function on( elem, types, selector, data, fn, one ) {
 	return elem.each( function() {
 		jQuery.event.add( this, types, fn, data, selector );
 	} );
+}
+
+function expandSelfClosingTags(html) {
+	var rxhtmlTag = /<(?!img|area)(([a-z][^\w\/>]*)[^>]*)\/>/gi;
+	return html.replace(rxhtmlTag, "<$1></$2>"); // BAD
 }
 
 /*
